@@ -1,0 +1,33 @@
+@import "tailwindcss";
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: #212121;
+  /* background-color: rgba(255, 255, 255, 0.87); */
+  background-color: #fff;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.common-btn {
+  cursor: pointer;
+  background-color: whitesmoke;
+  border: 2px solid #003365;
+  color: #014488;
+
+  font-family: system-ui;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.common-btn:hover {
+  background-color: rgb(230, 230, 230);
+  border: 2px solid #014488;
+  color: #014488;
+}

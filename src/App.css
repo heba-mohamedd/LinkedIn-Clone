@@ -1,0 +1,8 @@
+.login-btn {
+  padding: 10px;
+  background-color: #0274b3;
+  cursor: pointer;
+}
+.login-btn:hover {
+  background-color: #005684;
+}
