@@ -31,14 +31,14 @@ export function RegisterComponent() {
           <p className="text-gray-600">
             Stay updated on your professional world
           </p>
-          <input
+          {/* <input
             type="text"
             placeholder="Your Name"
             onChange={(event) =>
               setCredentails({ ...credentails, name: event.target.value })
             }
             className="p-3  border rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-600"
-          />
+          /> */}
 
           <input
             type="email"

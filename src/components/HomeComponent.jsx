@@ -1,5 +1,11 @@
 import React from "react";
+import { Button } from "./ui";
+import { onLogout } from "../api";
 
 export function HomeComponent() {
-  return <div>HomeComponent</div>;
+  return (
+    <div>
+      <Button onClick={onLogout}>Log out</Button>
+    </div>
+  );
 }
