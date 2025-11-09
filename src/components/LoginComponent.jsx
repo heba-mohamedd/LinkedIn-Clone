@@ -4,6 +4,7 @@ import { GoogleSignInAPI, LoginAPI, RegisterAPI } from "./../api/auth/AuthAPI";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Button, LogoHeader } from "./ui";
+import GoogleLogo from "../assets/google.png";
 import GoogleButton from "react-google-button";
 
 export function LoginComponent() {
@@ -72,17 +73,13 @@ export function LoginComponent() {
             Sign In
           </Button>
           <Divider text="or" />
-          {/* <GoogleButton
-            onClick={() => {
-              console.log("Google button clicked");
-            }}
-          /> */}
+          {/* <GoogleButton onClick={googleSignIn} /> */}
 
           <Button onClick={googleSignIn} className="bg-white" variant="outline">
             <div className="flex justify-center items-center j">
               {" "}
               <img
-                src="src\assets\png-clipart-google-app-logo-google-logo-g-suite-google-text-logo.png"
+                src={GoogleLogo}
                 className="w-[30px] h-[30px] mr-3"
                 alt="google"
               />
