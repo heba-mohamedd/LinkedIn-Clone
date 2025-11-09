@@ -7,12 +7,12 @@ import Loader from "../components/ui/Loader";
 
 export function Login() {
   const navigate = useNavigate();
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     onAuthStateChanged(auth, (res) => {
       if (res?.accessToken) navigate("/home");
-      // else setLoading(false);
+      else setLoading(false);
     });
   }, []);
-  return <LoginComponent />;
+  return loading ? <Loader /> : <LoginComponent />;
 }
