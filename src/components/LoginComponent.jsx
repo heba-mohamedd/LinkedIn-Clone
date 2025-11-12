@@ -1,11 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { GoogleSignInAPI, LoginAPI, RegisterAPI } from "./../api/auth/AuthAPI";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Button, LogoHeader } from "./ui";
 import GoogleLogo from "../assets/google.png";
 import GoogleButton from "react-google-button";
+import { GoogleSignInAPI, LoginAPI } from "../api";
 
 export function LoginComponent() {
   const navigate = useNavigate();

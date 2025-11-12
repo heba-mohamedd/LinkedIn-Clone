@@ -1,6 +1,5 @@
 import React from "react";
-import { Button, PostUpdata } from "./ui";
-import TopBar from "./ui/TopBar";
+import { PostUpdata } from "./ui";
 
 export function HomeComponent() {
   return (

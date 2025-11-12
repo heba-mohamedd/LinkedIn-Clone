@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Avatar } from "./Avatar";
 import { ModalComponent } from "./Modal";
+import { postStatus } from "../../api";
 
 export function PostUpdata() {
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("");
-  const sendStatus = () => {
+  const sendStatus = async () => {
+    await postStatus(status);
     console.log(status);
     setModalOpen(false);
     setStatus("");
