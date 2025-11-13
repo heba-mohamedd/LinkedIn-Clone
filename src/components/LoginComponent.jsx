@@ -18,7 +18,7 @@ export function LoginComponent() {
       let res = await LoginAPI(credentails.email, credentails.password);
       toast.success("Signed In to Linkedin!");
       console.log(res);
-      // localStorage.setItem("userEmail", res.user.email);
+      localStorage.setItem("userEmail", res.user.email);
       navigate("/home");
     } catch (err) {
       console.log(err);
@@ -39,84 +39,87 @@ export function LoginComponent() {
   };
 
   return (
-    <div>
-      {" "}
-      <>
-        <LogoHeader />
-        <div className=" gap-3 flex flex-col w-[40%] m-auto p-6 rounded-xl">
-          <p className="text-3xl font-semibold">Sign In</p>
-          <p className="text-gray-600">
-            Stay updated on your professional world
-          </p>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+      {/* Header */}
+      <LogoHeader />
 
-          <input
-            type="email"
-            placeholder="Email or Phone"
-            onChange={(event) =>
-              setCredentials({ ...credentails, email: event.target.value })
-            }
-            className="p-3  border rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-600"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            className="p-3  border rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-600"
-            onChange={(event) =>
-              setCredentials({ ...credentails, password: event.target.value })
-            }
-          />
+      {/* Sign In Card */}
+      <div className="w-[90%] sm:w-[70%] md:w-[50%] lg:w-[40%] xl:w-[30%] bg-white shadow-md p-8 rounded-2xl flex flex-col gap-4">
+        <p className="text-3xl font-semibold text-center">Sign In</p>
+        <p className="text-gray-600 text-center">
+          Stay updated on your professional world
+        </p>
 
-          <p className="text-[#0274b3] font-semibold cursor-pointer hover:underline">
-            Forget Password
-          </p>
-          <Button onClick={login} variant="solid">
-            Sign In
-          </Button>
-          <Divider text="or" />
-          {/* <GoogleButton onClick={googleSignIn} /> */}
+        <input
+          type="email"
+          placeholder="Email or Phone"
+          onChange={(event) =>
+            setCredentials({ ...credentails, email: event.target.value })
+          }
+          className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-600"
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(event) =>
+            setCredentials({ ...credentails, password: event.target.value })
+          }
+          className="p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-cyan-600"
+        />
 
-          <Button onClick={googleSignIn} className="bg-white" variant="outline">
-            <div className="flex justify-center items-center j">
-              {" "}
-              <img
-                src={GoogleLogo}
-                className="w-[30px] h-[30px] mr-3"
-                alt="google"
-              />
-              <span>Sign in with google</span>
-            </div>
-          </Button>
+        <p className="text-[#0274b3] font-semibold cursor-pointer hover:underline text-right">
+          Forget Password?
+        </p>
 
-          {/* <Button onClick={() => {}} className="bg-white" variant="outline">
-            <div className="flex justify-center items-center j">
-              {" "}
-              <img
-                src="src\assets\R.png"
-                className="w-[50px] h-[30px] mr-3"
-                alt="google"
-              />
-              <span> Sign In with Apple</span>
-            </div>
-          </Button> */}
+        <Button onClick={login} variant="solid">
+          Sign In
+        </Button>
 
-          <div className="text-[#0274b3]">
-            <p className=" text-center">
-              New to LinkedIn?{" "}
-              <span
-                onClick={() => navigate("/register")}
-                className="cursor-pointer font-semibold hover:underline"
-              >
-                Join now
-              </span>
-            </p>
+        <Divider text="or" />
+
+        <Button
+          onClick={googleSignIn}
+          className="bg-white border hover:bg-gray-100 transition-all duration-200"
+          variant="outline"
+        >
+          <div className="flex justify-center items-center">
+            <img
+              src={GoogleLogo}
+              className="w-[25px] h-[25px] mr-3"
+              alt="google"
+            />
+            <span className="text-gray-700 font-medium">
+              Sign in with Google
+            </span>
           </div>
+        </Button>
+        {/* <Button onClick={() => {}} className="bg-white" variant="outline">
+              <div className="flex justify-center items-center j">
+                {" "}
+                <img
+                  src="src\assets\R.png"
+                  className="w-[50px] h-[30px] mr-3"
+                  alt="google"
+                />
+                <span> Sign In with Apple</span>
+              </div>
+            </Button> */}
+
+        <div className="text-center mt-2 text-gray-700">
+          New to LinkedIn?{" "}
+          <span
+            onClick={() => navigate("/register")}
+            className="cursor-pointer text-[#0274b3] font-semibold hover:underline"
+          >
+            Join now
+          </span>
         </div>
-      </>
+      </div>
     </div>
   );
 }
 
-function Divider({ text = "" }) {
+export function Divider({ text = "" }) {
   return (
     <div className="flex items-center text-gray-500 font-medium">
       <div className="flex-grow border-t border-gray-300"></div>

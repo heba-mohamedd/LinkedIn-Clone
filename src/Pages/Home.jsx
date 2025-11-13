@@ -6,7 +6,7 @@ import { auth } from "../firebaseConfig";
 
 import Loader from "./../components/ui/Loader";
 
-export function Home() {
+export function Home({ currentUser }) {
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   useEffect(() => {
@@ -15,5 +15,5 @@ export function Home() {
       else setLoading(false);
     });
   }, []);
-  return loading ? <Loader /> : <HomeComponent />;
+  return loading ? <Loader /> : <HomeComponent currentUser={currentUser} />;
 }

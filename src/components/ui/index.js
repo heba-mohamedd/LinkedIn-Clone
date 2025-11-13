@@ -2,6 +2,8 @@ export * from "./LogoHeader";
 export * from "./Button";
 export * from "./Loader";
 export * from "./TopBar";
-export * from "./PostUpdata"
-export * from "./Avatar"
-export * from "./Modal"
+export * from "./PostUpdata";
+export * from "./Avatar";
+export * from "./Modal";
+export * from "./PostsCard";
+export * from "./TextExpander";

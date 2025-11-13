@@ -6,6 +6,7 @@ import { auth } from "../firebaseConfig";
 
 export default function Layout() {
   const [user, setUser] = useState(null);
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);

@@ -8,47 +8,87 @@ import { IoIosNotificationsOutline } from "react-icons/io";
 import { FiUserCheck } from "react-icons/fi";
 import { IoIosLogOut } from "react-icons/io";
 import LinkedinLogo from "../../assets/LinkedinLogo.png";
-import Profile from "../../assets/profile.webp";
+import DefaultProfile from "../../assets/profile.webp";
 import { useNavigate } from "react-router-dom";
-import { Avatar } from "./Avatar";
+
 import { onLogout } from "../../api";
+import { Avatar, Dropdown, Menu } from "antd";
+
 export default function TopBar() {
   const navigate = useNavigate();
   const goToRoute = (route) => {
     navigate(route);
   };
+
+  const handleLogOut = () => {
+    onLogout();
+    localStorage.removeItem("userEmail");
+  };
+
+  const items = [
+    {
+      key: "logout",
+      label: (
+        <div
+          onClick={handleLogOut}
+          className="flex items-center gap-3 text-gray-700 hover:text-red-500 mx-[15px]"
+        >
+          <IoIosLogOut size={20} />
+          <span>Logout</span>
+        </div>
+      ),
+    },
+  ];
   return (
-    <div
-      className="w-full h-[60px] bg-[rgba(255,255,255,0.87)] flex items-center
-"
-    >
-      <img
-        src={LinkedinLogo}
-        alt=" logo"
-        className="w-[50px] ml-[20px]  rounded-full"
-      />
-      <div className="flex items-center justify-between w-full ml-[40px] ">
-        <div className="flex items-center justify-between w-[45%]  ">
-          <IoIosSearch size={25} className="react-icon" />
-          <IoHomeOutline
-            size={25}
-            className="react-icon"
-            onClick={() => goToRoute("/home")}
+    <div className="w-full h-[60px] bg-[rgba(255,255,255,0.87)] flex items-center justify-between px-4 sm:px-8 shadow-sm sticky top-0 z-50 backdrop-blur-md">
+      {/* Logo */}
+      <div className="flex items-center">
+        <img
+          src={LinkedinLogo}
+          alt="logo"
+          className="w-[45px] sm:w-[50px] rounded-full cursor-pointer"
+          onClick={() => goToRoute("/home")}
+        />
+      </div>
+
+      {/* Icons (Middle Section) */}
+      <div className="hidden sm:flex items-center justify-between gap-6 text-gray-700">
+        <IoIosSearch size={25} className="react-icon" />
+        <IoHomeOutline
+          size={25}
+          className="react-icon"
+          onClick={() => goToRoute("/home")}
+        />
+        <FiUserCheck
+          size={25}
+          className="react-icon"
+          onClick={() => goToRoute("/profile")}
+        />
+        <IoBagHandleOutline size={25} className="react-icon" />
+        <LuMessageCircleMore size={25} className="react-icon" />
+        <IoIosNotificationsOutline size={25} className="react-icon" />
+      </div>
+
+      {/* Right Section (Avatar + Logout) */}
+      <div className="flex items-center gap-4 sm:gap-6">
+        <Dropdown menu={{ items }} placement="bottomRight" trigger={["click"]}>
+          <Avatar
+            size={40}
+            src={DefaultProfile}
+            className="cursor-pointer hover:opacity-80 transition"
           />
-          <FiUserCheck
-            size={25}
-            className="react-icon"
-            onClick={() => goToRoute("/profile")}
-          />
-          <IoBagHandleOutline size={25} className="react-icon" />
-          <LuMessageCircleMore size={25} className="react-icon" />
-          <IoIosNotificationsOutline size={25} className="react-icon" />
-        </div>
-        <div className="flex justify-center items-center ml-[20px] mr-[40px]">
-          {" "}
-          <Avatar className=" mr-[30px]" />
-          <IoIosLogOut size={25} onClick={onLogout} className="react-icon" />
-        </div>
+        </Dropdown>
+      </div>
+
+      {/* Mobile Icons (visible only on small screens) */}
+      <div className="flex sm:hidden items-center gap-5 text-gray-700">
+        <IoHomeOutline
+          size={25}
+          className="react-icon"
+          onClick={() => goToRoute("/home")}
+        />
+        <LuMessageCircleMore size={25} className="react-icon" />
+        <IoIosNotificationsOutline size={25} className="react-icon" />
       </div>
     </div>
   );
