@@ -1,5 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
+import { ProfileCard, ProfileEdit } from "./ui";
 
-export function ProfileComponent() {
-  return <div>ProfileComponent</div>;
+export function ProfileComponent({ currentUser }) {
+  const [isEdit, setIsEdit] = useState(false);
+
+  const onEdit = () => {
+    setIsEdit((prev) => !prev);
+  };
+  return (
+    <div>
+      {isEdit ? (
+        <ProfileEdit onEdit={onEdit} />
+      ) : (
+        <ProfileCard currentUser={currentUser} onEdit={onEdit} />
+      )}
+    </div>
+  );
 }

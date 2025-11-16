@@ -7,3 +7,5 @@ export * from "./Avatar";
 export * from "./Modal";
 export * from "./PostsCard";
 export * from "./TextExpander";
+export * from "./ProfileEdit";
+export * from "./ProfileCard";
