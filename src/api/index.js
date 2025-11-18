@@ -1,2 +1,2 @@
-export * from "./AuthAPI"
-export * from "./FirestoreAPI"
+export * from "./AuthAPI";
+export * from "./FirestoreAPI";

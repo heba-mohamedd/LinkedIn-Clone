@@ -3,9 +3,9 @@ import { Avatar } from "antd";
 import DefaultProfile from "../../assets/profile.webp";
 import { TextExpander } from "./TextExpander";
 
-export function PostsCard({ post }) {
+export default function PostsCard({ post }) {
   return (
-    <div className="w-[70vw] bg-white shadow-md rounded-2xl p-5 mt-6 border border-gray-200">
+    <div className="m-5 w-full max-w-3xl mx-auto bg-white shadow-sm rounded-2xl p-8 border border-gray-100 ">
       {/* post header */}
       <div className="flex items-center gap-3 mb-3">
         <Avatar size={40} src={DefaultProfile} />

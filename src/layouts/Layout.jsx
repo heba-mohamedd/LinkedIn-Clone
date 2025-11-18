@@ -10,7 +10,7 @@ export default function Layout() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      console.log(currentUser);
+      // console.log(currentUser);
     });
 
     return () => unsubscribe();

@@ -3,7 +3,7 @@ import { PostUpdata } from "./ui";
 
 export function HomeComponent({ currentUser }) {
   return (
-    <div className="flex  justify-center items-center flex-col">
+    <div className="">
       <PostUpdata currentUser={currentUser} />
     </div>
   );

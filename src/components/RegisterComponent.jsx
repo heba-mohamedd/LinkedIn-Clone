@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { Button, LogoHeader } from "./ui";
 import GoogleLogo from "../assets/google.png";
 import { Divider } from "./LoginComponent";
+import { getUniqueID } from "../helpers/getUniqueID";
 
 export function RegisterComponent() {
   const [credentails, setCredentails] = useState({});
@@ -14,7 +15,11 @@ export function RegisterComponent() {
     try {
       let res = await RegisterAPI(credentails.email, credentails.password);
 
-      postUserData({ name: credentails.name, email: credentails.email });
+      postUserData({
+        name: credentails.name,
+        email: credentails.email,
+        userID: getUniqueID(),
+      });
       toast.success("Account Created!");
       console.log(res);
       localStorage.setItem("userEmail", res.user.email);

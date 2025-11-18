@@ -1,11 +1,11 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Profile } from "../Pages";
 import { getCurrentUser } from "../api";
 
 export default function ProfileLayout() {
   const [currentUser, setCurrentUser] = useState({});
 
-  useMemo(() => {
+  useEffect(() => {
     getCurrentUser(setCurrentUser);
   }, []);
   return (

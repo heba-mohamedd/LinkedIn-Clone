@@ -7,7 +7,7 @@ export function ModalComponent({
   status,
   sendStatus,
 }) {
-  console.log(status);
+  // console.log(status);
   return (
     <div>
       <Modal
