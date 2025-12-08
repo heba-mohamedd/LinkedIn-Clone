@@ -9,7 +9,7 @@ import { getUniqueID } from "../../helpers/getUniqueID";
 const PostsCard = lazy(() => import("./PostsCard")); // lazy load  // postsCard component should become >>export defult
 
 export function PostUpdata({ currentUser }) {
-  let userEmail = localStorage.getItem("userEmail");
+  // let userEmail = localStorage.getItem("userEmail");
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [allStatuses, setAllStatuses] = useState([]);
@@ -18,8 +18,9 @@ export function PostUpdata({ currentUser }) {
     let object = {
       status: status,
       timeStamp: moment().format("LLL"),
-      userEmail: userEmail,
+      userEmail: currentUser.email,
       userName: currentUser.name,
+      userID: currentUser.id,
       postID: getUniqueID(),
     };
 
