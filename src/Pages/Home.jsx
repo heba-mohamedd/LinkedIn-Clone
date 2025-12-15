@@ -15,5 +15,9 @@ export function Home({ currentUser }) {
       else setLoading(false);
     });
   }, []);
-  return loading ? <Loader /> : <HomeComponent currentUser={currentUser} />;
+  return loading ? (
+    <Loader children="Loading..Plase Wait.." />
+  ) : (
+    <HomeComponent currentUser={currentUser} />
+  );
 }

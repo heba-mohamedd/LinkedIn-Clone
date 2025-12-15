@@ -14,5 +14,9 @@ export function Profile({ currentUser }) {
       else setLoading(false);
     });
   }, []);
-  return loading ? <Loader /> : <ProfileComponent currentUser={currentUser} />;
+  return loading ? (
+    <Loader children="Loading..Plase Wait.." />
+  ) : (
+    <ProfileComponent currentUser={currentUser} />
+  );
 }

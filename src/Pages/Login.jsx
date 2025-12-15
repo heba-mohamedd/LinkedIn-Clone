@@ -14,5 +14,9 @@ export function Login() {
       else setLoading(false);
     });
   }, []);
-  return loading ? <Loader /> : <LoginComponent />;
+  return loading ? (
+    <Loader children="Loading..Plase Wait.." />
+  ) : (
+    <LoginComponent />
+  );
 }
