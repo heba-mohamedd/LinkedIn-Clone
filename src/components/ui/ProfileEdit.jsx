@@ -33,7 +33,7 @@ export function ProfileEdit({ onEdit, currentUser }) {
     }
   }, [currentUser]);
   return (
-    <div className="mt-6 bg-white shadow-md rounded-xl p-6 max-w-lg mx-auto border">
+    <div className="mt-6 bg-white shadow-md rounded-xl p-6 max-w-lg mx-auto ">
       <Button onClick={onEdit} className="mb-4">
         <IoReturnDownBackOutline size={20} />
         Go Back

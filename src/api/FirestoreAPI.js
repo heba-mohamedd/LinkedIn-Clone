@@ -6,12 +6,15 @@ import {
   updateDoc,
   query,
   where,
+  deleteDoc,
+  setDoc,
 } from "firebase/firestore";
 import { firestore } from "../firebaseConfig";
 import { toast } from "react-toastify";
 
 const postsRef = collection(firestore, "posts");
 const userRef = collection(firestore, "users");
+let likeRef = collection(firestore, "likes");
 // console.log(userRef);   //print data about collection
 export const postStatus = async (object) => {
   await addDoc(postsRef, object)
@@ -84,4 +87,29 @@ export const getSingleUser = (setCurrentUser, email) => {
       })[0]
     );
   });
+};
+
+export const likePost = (postId, userId, liked) => {
+  try {
+    let docToLike = doc(likeRef, `${userId}_${postId}`);
+    if (liked) deleteDoc(docToLike);
+    else setDoc(docToLike, { userId, postId });
+  } catch (error) {
+    console.log({ error });
+  }
+};
+
+export const getLikesByUser = (userId, postId, setLiked, setLikesCount) => {
+  try {
+    let likeQuery = query(likeRef, where("postId", "==", postId));
+    onSnapshot(likeQuery, (response) => {
+      let likes = response.docs.map((doc) => doc.data());
+      let likesCount = likes?.length;
+      let isLiked = likes.some((like) => like.userId === userId);
+      setLiked(isLiked);
+      setLikesCount(likesCount);
+    });
+  } catch (error) {
+    console.log(error);
+  }
 };

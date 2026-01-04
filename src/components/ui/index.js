@@ -9,3 +9,4 @@ export * from "./Modal";
 export * from "./TextExpander";
 export * from "./ProfileEdit";
 export * from "./ProfileCard";
+export * from "./LikeButton";

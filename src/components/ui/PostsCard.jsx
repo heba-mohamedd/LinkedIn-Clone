@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Avatar, Card } from "antd";
 import DefaultProfile from "../../assets/profile.webp";
 import { TextExpander } from "./TextExpander";
 import { useNavigate } from "react-router-dom";
+import LikeButton from "./LikeButton";
+import { getCurrentUser } from "../../api";
 
 function PostsCard({ post }) {
   const navigate = useNavigate();
+  const [currentUser, setCurrentUser] = useState({});
+  useEffect(() => {
+    getCurrentUser(setCurrentUser);
+  }, []);
 
   return (
     <div className="my-3 flex justify-center w-full max-w-3xl">
@@ -46,6 +52,9 @@ function PostsCard({ post }) {
           >
             {post.status}
           </TextExpander>
+        </div>
+        <div>
+          <LikeButton postId={post?.id} userId={currentUser?.id} />
         </div>
       </Card>
     </div>
