@@ -54,7 +54,11 @@ function PostsCard({ post }) {
           </TextExpander>
         </div>
         <div>
-          <LikeButton postId={post?.id} userId={currentUser?.id} />
+          <LikeButton
+            postId={post?.id}
+            userId={currentUser?.id}
+            currentUser={currentUser}
+          />
         </div>
       </Card>
     </div>
